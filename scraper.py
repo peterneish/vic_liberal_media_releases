@@ -19,9 +19,9 @@ for li in root.cssselect("li[class='media-releases-item']"):
   link  = url + li.cssselect("a")[0].attrib['href']
   description = li.cssselect("p")[0].text_content()
   getdate = re.compile('News/(.*)/')
-  date = getdate.match(link)
-  date = getdate.group(1)
-  date = dateutil.parser.parse(date)
+  mdate = getdate.match(link)
+  mdate = mdate.group(1)
+  mdate = dateutil.parser.parse(mdate)
   
   
   # # Write out to the sqlite database using scraperwiki library

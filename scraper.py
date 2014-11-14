@@ -18,9 +18,9 @@ for li in root.cssselect("li[class='media-releases-item']"):
   title = li.cssselect("h4")[0].text_content()
   link  = url + li.cssselect("a")[0].attrib['href']
   description = li.cssselect("p")[0].text_content()
-  getdate = re.compile('News/(.*)/')
-  mdate = getdate.match(link)
-  mdate = mdate.group(1)
+  p = re.compile('News/(.*)/')
+  m = p.match(link)
+  mdate = m.group(1)
   mdate = dateutil.parser.parse(mdate)
   
   

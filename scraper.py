@@ -3,6 +3,8 @@
 
 import scraperwiki
 import lxml.html
+import dateutil.parser
+import re
 
 url = "https://vic.liberal.org.au"
 #
@@ -15,7 +17,12 @@ root = lxml.html.fromstring(html)
 for li in root.cssselect("li[class='media-releases-item']"):
   title = li.cssselect("h4")[0].text_content()
   link  = url + li.cssselect("a")[0].attrib['href']
+  description = 
+  getdate = re.compile('News\/(.*)\/')
+  date = getdate.match(link).group(1)
+  date = dateutil.parser.parse(date)
+  
   
   # # Write out to the sqlite database using scraperwiki library
-  scraperwiki.sqlite.save(unique_keys=['title'], data={"title": title, "link": link})
+  scraperwiki.sqlite.save(unique_keys=['title'], data={"title": title, "link": link, "date": date})
 

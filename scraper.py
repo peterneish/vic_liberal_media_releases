@@ -3,16 +3,18 @@
 
 import scraperwiki
 import lxml.html
+
+url = "https://vic.liberal.org.au"
 #
 # # Read in a page
-html = scraperwiki.scrape("https://vic.liberal.org.au")
+html = scraperwiki.scrape(url)
 
 #
 # # Find something on the page using css selectors
 root = lxml.html.fromstring(html)
 for li in root.cssselect("li[class='media-releases-item']"):
   title = li.cssselect("h4")[0].text_content()
-  link  = li.cssselect("a")[0].attrib['href']
+  link  = url + li.cssselect("a")[0].attrib['href']
   
   # # Write out to the sqlite database using scraperwiki library
   scraperwiki.sqlite.save(unique_keys=['title'], data={"title": title, "link": link})

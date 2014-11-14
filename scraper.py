@@ -15,5 +15,5 @@ for li in root.cssselect("li[class='media-releases-item']"):
   link  = li.cssselect("a")[0].attrib('href')
   
   # # Write out to the sqlite database using scraperwiki library
-  scraperwiki.sqlite.save(unique_keys=['title'], data={"title": title, "link", link})
+  scraperwiki.sqlite.save(unique_keys=['title'], data={"title": title, "link": link})
 

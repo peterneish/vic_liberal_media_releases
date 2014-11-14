@@ -25,5 +25,5 @@ for li in root.cssselect("li[class='media-releases-item']"):
   
   
   # # Write out to the sqlite database using scraperwiki library
-  scraperwiki.sqlite.save(unique_keys=['title'], data={"title": title, "link": link, "date": date, "description": description})
+  scraperwiki.sqlite.save(unique_keys=['title'], data={"title": title, "link": link, "date": mdate, "description": description})
 

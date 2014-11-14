@@ -20,7 +20,7 @@ for li in root.cssselect("li[class='media-releases-item']"):
   description = li.cssselect("p")[0].text_content()
   getdate = re.compile('News/(.*)/')
   date = getdate.match(link)
-  date = date.group(1)
+  date = getdate.group(1)
   date = dateutil.parser.parse(date)
   
   

@@ -12,7 +12,7 @@ html = scraperwiki.scrape("https://vic.liberal.org.au")
 root = lxml.html.fromstring(html)
 for li in root.cssselect("li[class='media-releases-item']"):
   title = li.cssselect("h4")[0].text_content()
-  link  = li.cssselect("a")[0].attrib('href')
+  link  = li.cssselect("a")[0].attrib['href']
   
   # # Write out to the sqlite database using scraperwiki library
   scraperwiki.sqlite.save(unique_keys=['title'], data={"title": title, "link": link})
